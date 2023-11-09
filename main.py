@@ -24,7 +24,7 @@ ticker = yf.Ticker(ticker_symbol)
 data = yf.download(tickers='BTC-EUR', period='max', interval='1d')
 data=data[data["High"]!=data["Low"]]
 
-#dfpl = data[0:100]
+dfpl = data[-365:]
 
 #fig = go.Figure(data=[go.Candlestick(x=dfpl.index,
 #                                    open=dfpl['Open'],
@@ -33,5 +33,18 @@ data=data[data["High"]!=data["Low"]]
 #                                    close=dfpl['Close'])])
 
 #fig.show()
-plt.plot(data.index, data.Close)
-plt.show()
+
+
+#plt.plot(data.index, data.Close)
+#plt.show()
+
+
+fig = go.Figure(data=[go.Candlestick(x=dfpl.index,
+                                    open=dfpl['Open'],
+                                    high=dfpl['High'],
+                                    low=dfpl['Low'],
+                                    close=dfpl['Close'],
+                                    increasing_line_color= 'green', decreasing_line_color= 'red'),
+                                    go.Scatter(x=dfpl.index, y=[27000]*len(dfpl), line=dict(color='red', width=1), name='Support/Resistance')])
+
+fig.show()
