@@ -79,3 +79,4 @@ websockets==9.1
 yarl==1.8.2
 zipp==3.11.0
 plotly==5.18.0
+matplotlib==3.8.1

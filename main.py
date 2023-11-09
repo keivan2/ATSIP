@@ -2,6 +2,7 @@ import yfinance as yf
 import pprint
 import pandas as pd
 import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
 # Define the ticker symbol
 ticker_symbol = "AAPL"
@@ -20,15 +21,17 @@ ticker = yf.Ticker(ticker_symbol)
 #df=df[df['Volume']!=0]
 #df=df.reset_index(drop=True)
 
-data = yf.download(tickers='BTC-USD', period='1mo', interval='15m')
+data = yf.download(tickers='BTC-EUR', period='max', interval='1d')
 data=data[data["High"]!=data["Low"]]
 
-dfpl = data[0:100]
+#dfpl = data[0:100]
 
-fig = go.Figure(data=[go.Candlestick(x=dfpl.index,
-                                    open=dfpl['Open'],
-                                    high=dfpl['High'],
-                                    low=dfpl['Low'],
-                                    close=dfpl['Close'])])
+#fig = go.Figure(data=[go.Candlestick(x=dfpl.index,
+#                                    open=dfpl['Open'],
+#                                    high=dfpl['High'],
+#                                    low=dfpl['Low'],
+#                                    close=dfpl['Close'])])
 
-fig.show()
+#fig.show()
+plt.plot(data.index, data.Close)
+plt.show()
