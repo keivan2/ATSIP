@@ -80,3 +80,6 @@ yarl==1.8.2
 zipp==3.11.0
 plotly==5.18.0
 matplotlib==3.8.1
+numpy==1.26.0
+PyQt5==5.15.10
+pandas-ta==0.3.14b0
